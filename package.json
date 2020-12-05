@@ -1,0 +1,43 @@
+{
+  "name": "mtgjson-graphql-v2",
+  "version": "1.0.0",
+  "description": "A GraphQL API for mtgjson.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/server.js"
+  },
+  "author": "Milo Rue",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.19.0",
+    "axios": "^0.21.0",
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.4.0",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.0",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.29",
+    "uuid": "^8.3.1",
+    "validator": "^13.5.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^14.14.10",
+    "@types/sqlite3": "^3.1.6",
+    "@types/uuid": "^8.3.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "release-it": "^14.2.2",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  }
+}
