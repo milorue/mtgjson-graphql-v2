@@ -1,26 +1,20 @@
+require('dotenv').config()
 import {Connection, createConnection} from 'typeorm'
 import { DatabaseConfig } from '../types/DatabaseOptions'
-import { CardEntity } from '../entities/card/Card.entity'
-import { ForeignDataEntity } from '../entities/card/ForeignData.entity'
-import { RulingsEntity } from '../entities/rulings/Rulings.entity'
-import { LeadershipEntity } from '../entities/card/LeadershipSkills.entity'
-import { LegalitiesEntity } from '../entities/legalities/Legalities.entity'
+import { CardEntity } from '../entities/Card.entity'
+import { ForeignDataEntity } from '../entities/ForeignData.entity'
+import { RulingsEntity } from '../entities/Rulings.entity'
+import { LegalitiesEntity } from '../entities/Legalities.entity'
 
-export const connectDatabase = async(args: DatabaseConfig ,devMode: boolean): Promise<Connection> => {
-    if(devMode){
-        return createConnection({
-            type: "sqlite",
-            database: "/home/mrue/open-source/mtgjson-graphql-v2/src/database/AllPrintings.db",
-            synchronize: true,
-            entities: [CardEntity, ForeignDataEntity, RulingsEntity, LegalitiesEntity]
-        })
-    }
+export const connectDatabase = async(): Promise<Connection> => {
     return createConnection({
         type: "postgres",
         host: process.env.DB_HOST,
         port: Number(process.env.DB_PORT),
-        database: process.env.DB_DATABASE,
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
+        database: process.env.DB_DATABASE,
+        synchronize: true,
+        entities: [CardEntity]
     })
 }

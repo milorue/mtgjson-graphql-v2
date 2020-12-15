@@ -2,6 +2,8 @@ import {createLogger, transports, format, Logger} from 'winston'
 
 const DEV: boolean = process.env.DEV_MODE === "true"
 
+
+// eventually this will go out so some sort of logging service
 const MTGLog: Logger = createLogger({
     level: DEV ? "debug" : "info",
     exitOnError: false,

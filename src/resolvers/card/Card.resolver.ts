@@ -1,5 +1,5 @@
 import { Resolver, Authorized, Query, Arg, Ctx } from "type-graphql";
-import { CardEntity } from "../../entities/card/Card.entity";
+import { CardEntity } from "../../entities/Card.entity";
 import CardGetInput from "./get/CardGetInput";
 import { ContextInterface } from "../../types/interfaces/Context.interface";
 import CardGet from "./get/CardGet";

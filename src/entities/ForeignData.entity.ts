@@ -1,39 +1,34 @@
 import { ObjectType, Field } from "type-graphql";
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity({name: "foreign_data"})
 @ObjectType("ForeignData")
-export class ForeignDataEntity extends BaseEntity{
+export class ForeignDataEntity{
 
-    @Field(() => String)
-    @PrimaryGeneratedColumn()
-    id: string
+    @Field(() => String, {nullable: true, description: "Name on the face of the card"})
+    @Column({nullable: true})
+    faceName: string
 
     @Field(() => String, {nullable: true, description: "Flavor text in foreign language"})
-    @Column()
+    @Column({nullable: true})
     flavorText: string
 
     @Field(() => String, {description: "Foreign language of card"})
-    @Column()
+    @Column({nullable: true})
     language: string
 
     @Field(() => String, {nullable: true, description: "Multiverse ID of the card"})
     @Column({nullable: true})
     multiverseId: number
 
-    @Field(() => String, {description: "Name of the card in foreign language"})
-    @Column()
+    @Field(() => String, {nullable: true, description: "Name of the card in foreign language"})
+    @Column({nullable: true})
     name: string
 
     @Field(() => String, {nullable: true, description: "Text ruling of the card in foreign language"})
-    @Column()
+    @Column({nullable: true})
     text: string
 
     @Field(() => String, {nullable: true, description: "Type of the card. Includes any supertypes and subtypes"})
-    @Column()
+    @Column({nullable: true})
     type: string
-
-    @Field(() => String, {description: "UUID of card"})
-    @Column()
-    uuid: string    
 }

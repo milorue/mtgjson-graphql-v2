@@ -1,13 +1,15 @@
 import {buildSchema} from 'type-graphql'
-import StatusResolver from '../resolvers/status.resolver'
 import RequestTokenChecker from './auth/RequestTokenChecker'
-import CardResolver from '../resolvers/card/Card.resolver'
+import { join } from 'path'
+
+// dynamically finds all resolvers
+const resolvers = join(__dirname + "../../resolvers/") + "**/*.resolver"
 
 export const createSchema = () => buildSchema({
     resolvers: [
-        StatusResolver,
-        CardResolver
+        `${resolvers}.js`, `${resolvers}.ts`
     ],
     authChecker: RequestTokenChecker,
     skipCheck: process.env.DEV_MODE !== "true",
+    validate: false,
 })

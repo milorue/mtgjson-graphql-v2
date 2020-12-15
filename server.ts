@@ -24,7 +24,14 @@ const runServer = async() => {
             password: process.env.DB_PASS,
             database: process.env.DB_DATABASE
         }
-        await connectDatabase(dbArgs, DEV)
+        try{
+            await connectDatabase()
+            MTGLog.info(`Connected to database successfully`)
+        }
+        catch(err){
+            MTGLog.error(`Database error: ${err}`)
+        }
+        
         const schema = await createSchema()
 
         const server = new ApolloServer({

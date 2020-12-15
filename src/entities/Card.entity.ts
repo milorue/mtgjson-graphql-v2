@@ -3,15 +3,15 @@ import { Entity, BaseEntity, PrimaryColumn, PrimaryGeneratedColumn, Column, OneT
 import { ForeignDataEntity } from "./ForeignData.entity";
 import { IdentifierEntity } from "./Identifiers.entity";
 import { LeadershipEntity } from "./LeadershipSkills.entity";
-import { LegalitiesEntity } from "../../entities/legalities/Legalities.entity";
+import { LegalitiesEntity } from "./Legalities.entity";
 import { PurchaseUrlsEntity } from "./PurchaseUrls.entity";
-import { RulingsEntity } from "../../entities/rulings/Rulings.entity";
+import { RulingsEntity } from "./Rulings.entity";
 
 // Note where nullable: true is where attributes are optional when used on the column and nullable: true on the field
 // when we want to be able to not be required to call that field when querying this entity.
 
 @Entity({name: "cards"})
-@ObjectType()
+@ObjectType("Card")
 export class CardEntity extends BaseEntity {
 
     @Field(() => String, {nullable: false})
@@ -27,28 +27,28 @@ export class CardEntity extends BaseEntity {
     asciiName: string
 
     @Field(() => [String], {nullable: true, description: "List of the card's available printing types"})
-    @Column({array: true, nullable: true})
-    availability: string
+    @Column("text", {array: true, nullable: true})
+    availability: string[]
 
     @Field(() => String, {nullable: true, description: "Color of the card border"})
     @Column()
     borderColor: string
 
     @Field(() => [String], {nullable: true, description: "List of the colors found in manaCost, colorIndicator, and text"})
-    @Column({array: true, nullable: true})
-    colorIdentity: string
+    @Column("text", {array: true, nullable: true})
+    colorIdentity: string[]
 
     @Field(() => [String], {nullable: true, description: "List of all the colors in the color indicator (The symbol prefixed to a card's types)"})
-    @Column({array: true, nullable: true})
-    colorIndicator: string
+    @Column("text", {array: true, nullable: true})
+    colorIndicator: string[]
 
     @Field(() => [String], {nullable: true, description: "List of all colors in manaCost, colorIndicator. Some cards may not have a value, such as cards with 'Devoid' in its text"})
-    @Column({array: true, nullable: true})
-    colors: string
+    @Column("text",{array: true, nullable: true})
+    colors: string[]
 
     @Field(() => Number, {nullable: true, description: "The converted mana cost of the card"})
     @Column({nullable: true})
-    covertedManaCost: number
+    convertedManaCost: number
 
     @Field(() => Number, {nullable: true, description: "How many of this card exists in a relevant deck"})
     @Column({nullable: true})
@@ -79,15 +79,15 @@ export class CardEntity extends BaseEntity {
     flavorText: string
 
     @Field(() => [ForeignDataEntity], {nullable: true})
-    @OneToMany(() => ForeignDataEntity, foreignData => foreignData.uuid)
+    @Column("jsonb", {nullable: true})
     foreignData: ForeignDataEntity[]
 
     @Field(() => [String], {nullable: true, description: "The visual frame effect"})
-    @Column({array: true, nullable: true})
-    frameEffects: string
+    @Column("text",{array: true, nullable: true})
+    frameEffects: string[]
 
     @Field(() => String, {nullable: true, description: "Version of the card frame style"})
-    @Column()
+    @Column({nullable: true})
     frameVersion: string
 
     @Field({nullable: true, description: "Starting maximum hand size total modifier. A plus or minus character proceeds an integer"})
@@ -111,6 +111,7 @@ export class CardEntity extends BaseEntity {
     hasNonFoil: boolean
 
     @Field(() => IdentifierEntity, {nullable: true})
+    @Column(type => IdentifierEntity)
     identifiers: IdentifierEntity
 
     @Field({nullable: true, description: "The card has some kind of alternative variation to its printed counterpart"})
@@ -162,18 +163,19 @@ export class CardEntity extends BaseEntity {
     isTimeshifted: boolean
 
     @Field(() => [String], {nullable: true, description: "All keywords found on a card"})
-    @Column({nullable: true, array: true})
-    keywords: string
+    @Column("text", {nullable: true, array: true})
+    keywords: string[]
 
     @Field(() => String, {nullable: true, description: "Type of card layout"})
     @Column()
     layout: string
 
     @Field(() => LeadershipEntity, {nullable: true, description: "See the Leadership Skills data model"})
+    @Column(type => LeadershipEntity)
     leadershipSkills: LeadershipEntity
 
     @Field(() => LegalitiesEntity, {nullable: true, description: "See the Legalities data model"})
-    @OneToMany(() => LegalitiesEntity, legalities => legalities.uuid)
+    @Column("jsonb", {nullable: true})
     legalities: LegalitiesEntity[]
 
     @Field(() => String, {nullable: true, description: "Starting life total modifier. A plus or minus character preceeds an integer. Used only on Vanguard cards"})
@@ -205,31 +207,31 @@ export class CardEntity extends BaseEntity {
     originalType: string
 
     @Field(() => [String], {nullable: true, description: "List of UUID's of this card with counterparts, such as transformed or melded faces"})
-    @Column({array: true, nullable: true})
-    otherFaceIds: string;
+    @Column("text",{array: true, nullable: true})
+    otherFaceIds: string[]
 
     @Field(() => String, {nullable: true, description: "Power of the card"})
     @Column({nullable: true})
     power: string
 
     @Field(() => [String], {nullable: true, description: "List of sets the card was printed in, in uppercase"})
-    @Column({nullable: true, array: true})
-    printings: string
+    @Column("text",{nullable: true, array: true})
+    printings: string[]
 
     @Field(() => [String], {nullable: true, description: "List of promotional types for a card"})
-    @Column({nullable: true, array: true})
-    promoTypes: string
+    @Column("text",{nullable: true, array: true})
+    promoTypes: string[]
 
     @Field(() => PurchaseUrlsEntity, {nullable: true, description: "See the Purchase Urls data model"})
-    @Column({nullable: true})
-    purchaseUrls: string
+    @Column(() => PurchaseUrlsEntity)
+    purchaseUrls: PurchaseUrlsEntity
 
     @Field(() => String, {nullable: true, description: "Card printing rarity"})
     @Column()
     rarity: string
 
     @Field(() => [RulingsEntity], {nullable: true, description: "See the Rulings data model"})
-    @OneToMany(() => RulingsEntity, ruling => ruling.uuid)
+    @Column("jsonb", {nullable: true})
     rulings: RulingsEntity[]
 
     @Field(() => String, {nullable: true, description: "The set code that the card is from"})
@@ -241,12 +243,12 @@ export class CardEntity extends BaseEntity {
     side: string
 
     @Field(() => [String], {nullable: true, description: "List of card subtypes found after em-dash"})
-    @Column({array: true, nullable: true})
-    subTypes: string
+    @Column("text",{array: true, nullable: true})
+    subTypes: string[]
 
     @Field(() => [String], {nullable: true, description: "List of card supertypes found before em-dash"})
-    @Column({array: true, nullable: true})
-    superTypes: string
+    @Column("text",{array: true, nullable: true})
+    superTypes: string[]
 
     @Field(() => String, {nullable: true, description: "Rules text of the card"})
     @Column({nullable: true})
@@ -261,16 +263,16 @@ export class CardEntity extends BaseEntity {
     type: string
 
     @Field(() => [String], {nullable: true, description: "List of all 'card types' of the card, including Un-sets and gameplay variants"})
-    @Column({array: true})
-    types: string
+    @Column("text",{array: true})
+    types: string[]
 
     @Field(() => String, {nullable: false, description: "A universal unique ID (v5) generated by MTGJSON. Each entry is unique"})
     @Column()
     uuid: string
 
     @Field(() => [String], {nullable: true, description: "List of UUID's of this card with alternate printings in the same set. Excludes Un-sets"})
-    @Column({array: true, nullable: true})
-    variation: string
+    @Column("text",{array: true, nullable: true})
+    variation: string[]
 
     @Field(() => String, {nullable: true, description: "Name of the watermark on the card"})
     @Column({nullable: true})
