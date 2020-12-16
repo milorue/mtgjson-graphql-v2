@@ -111,7 +111,7 @@ export class CardEntity extends BaseEntity {
     hasNonFoil: boolean
 
     @Field(() => IdentifierEntity, {nullable: true})
-    @Column(type => IdentifierEntity)
+    @Column(() => IdentifierEntity)
     identifiers: IdentifierEntity
 
     @Field({nullable: true, description: "The card has some kind of alternative variation to its printed counterpart"})
