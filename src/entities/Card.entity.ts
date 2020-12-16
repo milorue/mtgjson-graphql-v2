@@ -171,7 +171,7 @@ export class CardEntity extends BaseEntity {
     layout: string
 
     @Field(() => LeadershipEntity, {nullable: true, description: "See the Leadership Skills data model"})
-    @Column(type => LeadershipEntity)
+    @Column(() => LeadershipEntity)
     leadershipSkills: LeadershipEntity
 
     @Field(() => LegalitiesEntity, {nullable: true, description: "See the Legalities data model"})
