@@ -9,7 +9,7 @@ export const cardIngest = async(card: CardEntity) => {
             ...card
         })
         await newCard.save()
-        MTGLog.info(`Ingested: ${card.name}`)
+        MTGLog.info(`Ingested: ${newCard.name}`)
     }
     catch(err){
         MTGLog.error(`Ingesting Error: ${err}`)

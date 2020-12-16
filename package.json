@@ -8,7 +8,11 @@
     "dev": "nodemon server.ts",
     "build": "tsc --project tsconfig.json",
     "start": "node dist/server.js",
-    "ingest-cards": "ts-node src/util/ingest/Ingest.ts"
+    "ingest-database": "ts-node src/util/ingest/Ingest.ts",
+    "ingest-cards": "ts-node src/util/ingest/commands/IngestCards.ts",
+    "ingest-sets": "ts-node src/util/ingest/commands/IngestSets.ts",
+    "ingest-decklist": "ts-node src/util/ingest/commands/IngestDeckList.ts",
+    "ingest-decks": "ts-node src/util/ingest/commands/IngestDecks.ts"
   },
   "author": "Milo Rue",
   "license": "ISC",

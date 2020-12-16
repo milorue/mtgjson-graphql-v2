@@ -7,7 +7,7 @@ const parentURL = `https://mtgjson.com/api/`
 const version = `v5/`
 const apiURL = parentURL + version
 
-export const getCardSet = (set: string) => {
+export const getCardSet = (set: string): Promise<APIResponse> => {
     return axios
     .get(apiURL + set +'.json')
     .then(res => res.data)
@@ -19,19 +19,19 @@ export const getSetList = (): Promise<APIResponse> => {
     .then(res => res.data)
 }
 
-export const getDeck = (deck: string) => {
+export const getDeck = (deck: string): Promise<APIResponse> => {
     return axios
     .get(apiURL+ "decks/" + deck + '.json')
     .then(res => res.data)
 }
 
-export const getDeckList = () => {
+export const getDeckList = (): Promise<APIResponse> => {
     return axios
     .get(apiURL + "DeckList.json")
     .then(res => res.data)
 }
 
-export const getAtomicCards = () => {
+export const getAtomicCards = (): Promise<APIResponse> => {
     return axios
     .get(apiURL + "AtomicCards.json",
     {
@@ -44,13 +44,13 @@ export const getAtomicCards = () => {
     })
 }
 
-export const getCompiledList = () => {
+export const getCompiledList = (): Promise<APIResponse> => {
     return axios
     .get(apiURL + "CompiledList.json")
     .then(res => res.data)
 }
 
-export const getKeywords = () => {
+export const getKeywords = (): Promise<APIResponse> => {
     return axios
     .get(apiURL + "Keywords.json")
     .then(res => res.data)
@@ -62,7 +62,7 @@ export const getAllPrintings = (): Promise<APIResponse> => {
     .then(res => res.data)
 }
 
-export const getMeta = () => {
+export const getMeta = (): Promise<APIResponse> => {
     return axios
     .get(apiURL + "Meta.json",
     {
