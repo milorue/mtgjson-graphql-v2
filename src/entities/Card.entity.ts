@@ -176,7 +176,7 @@ export class CardEntity extends BaseEntity {
 
     @Field(() => LegalitiesEntity, {nullable: true, description: "See the Legalities data model"})
     @Column("jsonb", {nullable: true})
-    legalities: LegalitiesEntity[]
+    legalities: LegalitiesEntity
 
     @Field(() => String, {nullable: true, description: "Starting life total modifier. A plus or minus character preceeds an integer. Used only on Vanguard cards"})
     @Column({nullable: true})

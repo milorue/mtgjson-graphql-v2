@@ -10,7 +10,7 @@ import { RulingsEntity } from "./Rulings.entity";
 @ObjectType("AtomicCard")
 export class AtomicCardEntity extends BaseEntity {
 
-    @Field(() => String, {nullable: true})
+    @Field(() => String, {nullable: false})
     @PrimaryGeneratedColumn()
     id: string
 
