@@ -2,9 +2,9 @@ import { CardEntity } from "../../../entities/Card.entity";
 import { ContextInterface } from "types/interfaces/Context.interface";
 import CardGetInput from "./CardGetInput";
 
-const CardGet = async({cardName, uuid}: CardGetInput, ctx: ContextInterface): Promise<CardEntity> => {
+const CardGet = async({name, uuid}: CardGetInput, ctx: ContextInterface): Promise<CardEntity> => {
 
-    if(!cardName){
+    if(!name){
         const card = await CardEntity.findOne(
             {
                 where: {
@@ -15,14 +15,13 @@ const CardGet = async({cardName, uuid}: CardGetInput, ctx: ContextInterface): Pr
         if(!card){
             throw new Error("This card doesn't exist or we don't have data on it in our latest build")
         }
-        console.log(card)
         return card
     }
-    else if(cardName){
+    else if(name){
         const card = await CardEntity.findOne(
             {
                 where: {
-                    name: cardName
+                    name: name
                 }
             }
         )

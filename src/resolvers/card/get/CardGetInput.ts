@@ -7,7 +7,7 @@ class CardGetInput {
     uuid: string
 
     @Field({nullable: true})
-    cardName: string
+    name: string
 }
 
 export default CardGetInput
