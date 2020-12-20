@@ -6,8 +6,10 @@ import { ListOrder } from "../../../types/enums/Order.enum";
 // like type, release date, etc.
 @InputType()
 class DeckGetListInput {
-    @Field({nullable: true, defaultValue: ListOrder.ASC})
+    @Field(() => ListOrder)
     order: ListOrder
+
+    // TODO add more filters for deck listings
 }
 
 export default DeckGetListInput
