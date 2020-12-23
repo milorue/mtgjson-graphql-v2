@@ -24,7 +24,11 @@ const DeckGetList = async({skip, take}: PaginationInput, {order}: DeckGetListInp
     .getMany()
 
     const decks = await decksQuery
-    return decks
+    if(decks.length > 0){
+        return decks
+    } else{
+        throw new Error("There was an error retrieving the list of decks...")
+    }
     
 }
 
