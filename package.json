@@ -14,7 +14,8 @@
     "ingest-sets": "ts-node src/util/ingest/commands/IngestSets.ts",
     "ingest-decklist": "ts-node src/util/ingest/commands/IngestDeckList.ts",
     "ingest-decks": "ts-node src/util/ingest/commands/IngestDecks.ts",
-    "add-token": "ts-node src/util/services/tokenService/commands/addToken.command.ts"
+    "add-token": "ts-node src/util/services/tokenService/commands/addToken.command.ts",
+    "revoke-token": "ts-node src/util/services/tokenService/commands/revokeToken.command.ts"
   },
   "author": "Milo Rue",
   "license": "ISC",

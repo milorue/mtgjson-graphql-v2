@@ -1,4 +1,4 @@
-import { connectDatabase } from "util/ConnectDatabase"
+import { connectDatabase } from "../../../../util/ConnectDatabase"
 import { revokeAPIToken } from "../token.service"
 
 const readline = require("readline")

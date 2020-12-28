@@ -4,7 +4,7 @@ import MTGLog from '../../../util/Logger'
 
 
 export const generateAPIToken = async(): Promise<string> => {
-    const key = randomBytes(20).toString('hex')
+    const key = randomBytes(20).toString("hex")
     return key
 }
 
