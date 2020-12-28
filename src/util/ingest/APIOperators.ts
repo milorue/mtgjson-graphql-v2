@@ -7,7 +7,7 @@ const parentURL = `https://mtgjson.com/api/`
 const version = `v5/`
 const apiURL = parentURL + version
 
-export const getCardSet = (set: string): Promise<APIResponse> => {
+export const getSet = (set: string): Promise<APIResponse> => {
     return axios
     .get(apiURL + set +'.json')
     .then(res => res.data)

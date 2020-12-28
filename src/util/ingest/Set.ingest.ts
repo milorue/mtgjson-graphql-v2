@@ -1,5 +1,5 @@
-import { SetEntity } from "entities/Set.entity";
-import MTGLog from "util/Logger";
+import { SetEntity } from "../../entities/Set.entity";
+import MTGLog from "../../util/Logger";
 
 export const setIngest = async(set: SetEntity): Promise<void> => {
     MTGLog.info(`Began ingesting set: ${set.code} | ${set.name}`)

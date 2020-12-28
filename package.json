@@ -10,6 +10,7 @@
     "start": "node dist/server.js",
     "ingest-database": "ts-node src/util/ingest/Ingest.ts",
     "ingest-cards": "ts-node src/util/ingest/commands/IngestCards.ts",
+    "ingest-setlist": "ts-node src/util/ingest/commands/IngestSetList.ts",
     "ingest-sets": "ts-node src/util/ingest/commands/IngestSets.ts",
     "ingest-decklist": "ts-node src/util/ingest/commands/IngestDeckList.ts",
     "ingest-decks": "ts-node src/util/ingest/commands/IngestDecks.ts",

@@ -3,11 +3,11 @@ import { DeckEntity } from "../../../entities/Deck.entity";
 import { ContextInterface } from "types/interfaces/Context.interface";
 
 const DeckGet = async({name, code}: DeckGetInput, ctx: ContextInterface): Promise<DeckEntity> => {
-    if(!name){
+    if(name){
         const deck = await DeckEntity.findOne(
             {
                 where: {
-                    code: code,
+                    name: name
                 }
             }
         )
