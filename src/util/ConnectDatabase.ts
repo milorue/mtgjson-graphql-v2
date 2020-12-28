@@ -11,6 +11,7 @@ import { SetListEntity } from '../entities/SetList.entity'
 import { SetEntity } from '../entities/Set.entity'
 import { AtomicCardEntity } from '../entities/AtomicCard.entity'
 import { MetaEntity } from '../entities/Meta.entity'
+import { APITokenEntity } from '../entities/APIToken.entity'
 
 export const connectDatabase = async(): Promise<Connection> => {
     return createConnection({
@@ -22,6 +23,6 @@ export const connectDatabase = async(): Promise<Connection> => {
         database: process.env.DB_DATABASE,
         synchronize: true,
         entities: [CardEntity, DeckEntity, DeckListEntity, SetListEntity, SetEntity, AtomicCardEntity,
-        MetaEntity]
+        MetaEntity, APITokenEntity]
     })
 }
