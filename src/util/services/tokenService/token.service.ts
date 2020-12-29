@@ -1,6 +1,7 @@
 import {randomBytes} from 'crypto'
 import { APITokenEntity } from '../../../entities/APIToken.entity'
 import MTGLog from '../../../util/Logger'
+const schedule = require('node-schedule')
 
 
 export const generateAPIToken = async(): Promise<string> => {
@@ -48,6 +49,35 @@ export const tokenUsageIncrement = async(token: string): Promise<boolean> => {
         return false
     }
 
+}
+
+export const scheduleTokenUsageReset = async() => {
+    MTGLog.info(`Token Service Scheduler Online`)
+    // the inner function can be changed to the already existing token function if it's better
+    // currently implemented custom function cause I am unfamiliar with the scheduler and wanted more control over what's run
+    // If this proves reliable than we can try the existing functions for the token service.
+
+    // Runs every hour
+    let job = schedule.scheduleJob(`0 * * * *`, async() => {
+        let tokensQuery = APITokenEntity.createQueryBuilder()
+        .getMany()
+        
+        let tokens = await tokensQuery
+
+        MTGLog.info(`Running scheduled token rate usage reset @ ${new Date().toString()}`)
+        try{
+            tokens.map((token) => {
+                token.rate = 0
+                token.save()
+            })
+            MTGLog.info(`Scheduled token usage reset successful`)
+        }
+        catch(err){
+            MTGLog.error(`Error while resetting tokens: ${err}`)
+        }
+        
+        
+    })
 }
 
 export const resetAllTokenUsage = async(): Promise<boolean> => {

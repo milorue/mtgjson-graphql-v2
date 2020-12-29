@@ -5,6 +5,7 @@ import { DatabaseConfig } from "./src/types/DatabaseOptions"
 import { createSchema } from "./src/util/CreateSchema"
 import { ApolloServer } from "apollo-server"
 import SetContext from './src/util/auth/SetContext'
+import { scheduleTokenUsageReset } from "./src/util/services/tokenService/token.service"
 
 const pkg = require("./package.json")
 const RELEASE = `mtgjson-graphql@${pkg.version}`
@@ -31,6 +32,8 @@ const runServer = async() => {
         catch(err){
             MTGLog.error(`Database error: ${err}`)
         }
+
+        await scheduleTokenUsageReset()
         
         const schema = await createSchema()
 
