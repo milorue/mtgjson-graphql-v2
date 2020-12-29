@@ -12,4 +12,5 @@ export const createSchema = () => buildSchema({
     authChecker: RequestTokenChecker,
     skipCheck: process.env.DEV_MODE !== "true",
     validate: false,
+    emitSchemaFile: true,
 })
