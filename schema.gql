@@ -667,6 +667,7 @@ type Query {
   getDeckMetadata(input: DeckMetaGetInput!): DeckList!
   getDeckMetadataList(input: ListOrderInput!, page: PaginationInput!): [DeckList!]!
   getDecks(input: DeckGetListInput!, page: PaginationInput!): [Deck!]!
+  getMetadata: Meta!
   getSet(input: SetGetInput!): Set!
   getSets(input: ListOrderInput!, page: PaginationInput!): [Set!]!
   status: Boolean!
