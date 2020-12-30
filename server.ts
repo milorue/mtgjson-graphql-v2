@@ -5,6 +5,7 @@ import { DatabaseConfig } from "./src/types/DatabaseOptions"
 import { createSchema } from "./src/util/CreateSchema"
 import { ApolloServer } from "apollo-server"
 import SetContext from './src/util/auth/SetContext'
+import {createSentry} from './src/util/Sentry'
 import { scheduleTokenUsageReset } from "./src/util/services/tokenService/token.service"
 
 const pkg = require("./package.json")
@@ -18,13 +19,8 @@ MTGLog.info(`Running in ${MODE} mode`)
 
 const runServer = async() => {
     try{
-        const dbArgs: DatabaseConfig = {
-            host: process.env.DB_HOST,
-            port: Number(process.env.DB_PORT),
-            username: process.env.DB_USER,
-            password: process.env.DB_PASS,
-            database: process.env.DB_DATABASE
-        }
+        // Sentry is currently not setup correctly for distribution
+        //createSentry();
         try{
             await connectDatabase()
             MTGLog.info(`Connected to database successfully`)
