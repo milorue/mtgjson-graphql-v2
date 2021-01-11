@@ -14,6 +14,7 @@
     "ingest-sets": "ts-node src/util/ingest/commands/IngestSets.ts",
     "ingest-decklist": "ts-node src/util/ingest/commands/IngestDeckList.ts",
     "ingest-decks": "ts-node src/util/ingest/commands/IngestDecks.ts",
+    "ingest-metadata": "ts-node src/util/ingest/commands/IngestMetaData.ts",
     "add-token": "ts-node src/util/services/tokenService/commands/addToken.command.ts",
     "revoke-token": "ts-node src/util/services/tokenService/commands/revokeToken.command.ts"
   },
