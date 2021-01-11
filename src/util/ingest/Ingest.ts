@@ -8,6 +8,7 @@ import ingestDecks from "./commands/IngestDecks"
 import ingestDeckList from "./commands/IngestDeckList"
 import ingestSetList from "./commands/IngestSetList"
 import ingestSets from "./commands/IngestSets"
+import ingestMetaData from "./commands/IngestMetaData"
 
 // warning when utilizing this function unless you have
 // a large heap allocated you will likely run out of memory.
@@ -25,7 +26,8 @@ const databaseIngest = async () => {
     await ingestDecks()
     await ingestSets()
     await ingestDeckList()
-    await ingestSetList
+    await ingestSetList()
+    await ingestMetaData()
     
 }
 
