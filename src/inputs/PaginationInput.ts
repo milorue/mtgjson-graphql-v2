@@ -1,10 +1,11 @@
 import { InputType, Int, Field } from "type-graphql";
-import { Min, Max} from "class-validator";
+import { Min, Max, IsNumber} from "class-validator";
 
 @InputType()
 class PaginationInput{
     
-    @Field(() => Int)
+    @Field(() => Int, {nullable: true, defaultValue: 15})
+    @IsNumber()
     @Min(5)
     @Max(100)
     take: number = 15;

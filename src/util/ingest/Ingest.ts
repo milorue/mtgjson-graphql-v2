@@ -9,7 +9,8 @@ import ingestDeckList from "./commands/IngestDeckList"
 import ingestSetList from "./commands/IngestSetList"
 import ingestSets from "./commands/IngestSets"
 
-
+// warning when utilizing this function unless you have
+// a large heap allocated you will likely run out of memory.
 
 const databaseIngest = async () => {
     try{
