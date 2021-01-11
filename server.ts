@@ -53,8 +53,12 @@ const runServer = async() => {
                     return err
                 }
                 // go to a logging service of one's choice
+                if(err.message.startsWith('Database Error: ')){
+                    return new Error(`Internal server error please try again`)
+                }
                 return err
-            }
+            },
+            tracing: DEV,
         })
 
         const {url} = await server.listen({

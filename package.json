@@ -1,6 +1,6 @@
 {
   "name": "mtgjson-graphql-v2",
-  "version": "0.1.4",
+  "version": "0.4.0",
   "description": "A GraphQL API for mtgjson.com",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "nodemon server.ts",
     "build": "tsc --project tsconfig.json",
     "start": "node dist/server.js",
-    "ingest-database": "npm run ingest-cards && npm run ingest-setlist && npm run ingest-sets && npm run ingest-decklist && npm run ingest-decks",
+    "ingest-database": "npm run ingest-cards && npm run ingest-setlist && npm run ingest-sets && npm run ingest-decklist && npm run ingest-decks && npm run ingest-metadata",
     "ingest-cards": "ts-node src/util/ingest/commands/IngestCards.ts",
     "ingest-setlist": "ts-node src/util/ingest/commands/IngestSetList.ts",
     "ingest-sets": "ts-node src/util/ingest/commands/IngestSets.ts",
@@ -23,6 +23,7 @@
   "dependencies": {
     "@sentry/node": "^5.29.2",
     "@sentry/tracing": "^5.29.2",
+    "@types/nodemailer": "^6.4.0",
     "apollo-server": "^2.19.0",
     "axios": "^0.21.0",
     "bcryptjs": "^2.4.3",
@@ -30,6 +31,7 @@
     "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
     "node-schedule": "^1.3.2",
+    "nodemailer": "^6.4.17",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.0",
