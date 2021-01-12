@@ -9,7 +9,7 @@ export const generateAPIToken = async(): Promise<string> => {
     return key
 }
 
-export const addAPIToken = async(email: string, tokenRateLimit?: number): Promise<void> => {
+export const addAPIToken = async(email: string, tokenRateLimit?: number): Promise<string> => {
     // TODO clean input of email but for now its just admin use so its fine
 
     const key = await generateAPIToken();
@@ -20,14 +20,17 @@ export const addAPIToken = async(email: string, tokenRateLimit?: number): Promis
     if(tokenRateLimit){
         apiToken.rateLimit = tokenRateLimit
     }
+
+    
     
     // persists the token the database
     try{
         await apiToken.save()
         MTGLog.info(`Added API Token for ${email} with a rate limit of ${tokenRateLimit ? tokenRateLimit : 500} with token string: ${key}`)
+        return apiToken.token
     }
     catch(err){
-        MTGLog.error(err)
+        throw MTGLog.error(err)
     }
     
 }

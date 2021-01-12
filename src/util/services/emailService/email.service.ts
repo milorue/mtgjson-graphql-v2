@@ -1,5 +1,6 @@
+require('dotenv').config()
 import * as nodemailer from "nodemailer"
-import { emailAccount } from "./emailTypes"
+import { emailAccount, emailContent } from "./emailTypes"
 import MTGLog from "../../../util/Logger"
 const pkg = require("../../../../package.json")
 
@@ -26,7 +27,7 @@ export const sendTestEmail = async() => {
     try{
         let testEmail = await transporter.sendMail({
             from: account.user,
-            to: "milorue@gmail.com",
+            to: "mtgraphql@gmail.com",
             subject: "MTGJSON GraphQL Test Email",
             text: `This is a test of version: ${RELEASE} of MTGJSON GraphQL`,
             html: `<p>This is a test of version: ${RELEASE} of MTGJSON GraphQL</p>`
@@ -40,4 +41,35 @@ export const sendTestEmail = async() => {
     
 }
 
-sendTestEmail()
+export const sendConfirmationEmail = async(token: string, recipient: string) => {
+    try{
+        let transporter = nodemailer.createTransport({
+            host: `smtp.gmail.com`,
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        })
+    
+        let mailContent: emailContent = {
+            from: process.env.EMAIL_USER,
+            to: recipient,
+            subject: `MTGJSON GraphQL Token`,
+            text: `Welcome to MTGJSON's GraphQL Service. You're API token is ${token}`,
+            html: `
+            <h3>Welcome to MTGJSON's GraphQL Service</h3>
+            <br></br>
+            <p>You are currently using version: ${RELEASE} of MTGJSON GraphQL</p>
+            <p>You're api token is ${token}</p>`
+        }
+        
+    
+        let messageInfo = await transporter.sendMail(mailContent)
+        MTGLog.info(`Confirmation email was sent for ${recipient} with message id: ${messageInfo.messageId}`)
+    }
+    catch(err){
+        MTGLog.error(err)
+    }
+}
