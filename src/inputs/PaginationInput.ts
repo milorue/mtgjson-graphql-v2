@@ -6,7 +6,7 @@ class PaginationInput{
     
     @Field(() => Int, {nullable: true, defaultValue: 15})
     @IsNumber()
-    @Min(5)
+    @Min(1)
     @Max(100)
     take: number = 15;
 
