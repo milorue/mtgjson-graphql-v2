@@ -29,11 +29,16 @@ mtgjson data sets. This API focuses on the JSON payloads for MTGJSON specificall
 - SetList & DeckList (Meta-data structures for Sets & Decks)
 
 ### Maintained
-This codebase is maintained by Milo as part of the greater mtgjson team which can be found on the [website](https://mtgjson.com)
+This codebase is maintained by Milo as part of the greater mtgjson team which can be found on the [website](https://mtgjson.com). The hosted version of this software is available to patreons of the overall MTGJSON project in a beta status currently. 
+
+
+[![Patreon](https://img.shields.io/static/v1.svg?label=Patreon&message=Support%20MTGJSON&color=f96854&logo=patreon)](https://patreon.com/mtgjson)
+
+The Beta version of MTGGraphQL is available to patrons of MTGJSON with the goal of bringing a version to our other non-patron users.
 
 ### Contributing
 If you would like to contribute to the development of this project please reach out on [Discord](https://mtgjson.com/discord)
-or open a [pull request](https://github.com/milorue/mtgjson-graphql-v2/pulls) bug fixes, new features, and more are always appreciated.
+or open a [pull request](https://github.com/milorue/mtgjson-graphql-v2/pulls) bug fixes, new features, and more are always appreciated. Feel free to support us through code or financial contributions.
 
 ### Issues
 Report any bugs to [issues](https://github.com/milorue/mtgjson-graphql-v2/issues)
@@ -64,6 +69,7 @@ query{
 To get started from scratch quickly simply clone this repository and run the following:
 
 `npm install`
+
 `npm run dev`
 
 This should install the required dependencies and if you have the write .env file and environment setup then things should 
@@ -77,7 +83,10 @@ If you are looking to deploy this server yourself you will need to run
 `npm run build` and then `npm start` using whatever deployment strategies you would like.
 
 ### General Usage 
-For most people there will be no need to download the codebase and host your own server, the plans are to host this codebase at mtgjson.com/graphql or something similar.
+For most people there will be no need to download the codebase and host your own server, the plans are to host this codebase at mtgjson.com/graphql or something similar initially as a beta for patrons and possibly moving towards a wider release upon proven success.
+
+## Licensing
+MTGJSON GraphQL is a freely available product under the [MIT License](https://github.com/mtgjson/mtggraphql/blob/master/LICENSE), allowing our users to enjoy Magic: the Gathering data free of charge, in perpetuity.
 
 
 
