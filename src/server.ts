@@ -1,14 +1,14 @@
 require('dotenv').config()
-import MTGLog from "./src/util/Logger"
-import { connectDatabase } from "./src/util/ConnectDatabase"
-import { DatabaseConfig } from "./src/types/DatabaseOptions"
-import { createSchema } from "./src/util/CreateSchema"
+import MTGLog from "./util/Logger"
+import { connectDatabase } from "./util/ConnectDatabase"
+import { DatabaseConfig } from "./types/DatabaseOptions"
+import { createSchema } from "./util/CreateSchema"
 import { ApolloServer } from "apollo-server"
-import SetContext from './src/util/auth/SetContext'
-import {createSentry} from './src/util/Sentry'
-import { scheduleTokenUsageReset } from "./src/util/services/tokenService/token.service"
+import SetContext from './util/auth/SetContext'
+import {createSentry} from './util/Sentry'
+import { scheduleTokenUsageReset } from "./util/services/tokenService/token.service"
 
-const pkg = require("./package.json")
+const pkg = require("../package.json")
 const RELEASE = `mtgjson-graphql@${pkg.version}`
 
 MTGLog.info(`Starting ${RELEASE}`)

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc --project tsconfig.json",
     "start": "node dist/server.js",
     "ingest-database": "npm run ingest-cards && npm run ingest-setlist && npm run ingest-sets && npm run ingest-decklist && npm run ingest-decks && npm run ingest-metadata",
