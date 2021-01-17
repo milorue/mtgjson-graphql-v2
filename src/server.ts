@@ -37,7 +37,7 @@ const runServer = async() => {
         const server = new ApolloServer({
             schema,
             context: SetContext,
-            playground: DEV,
+            playground: true,
             cors: {
                 credentials: true,
                 origin: "*",
