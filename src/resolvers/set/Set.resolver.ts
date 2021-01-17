@@ -22,7 +22,7 @@ class SetResolver {
     @Authorized()
     @Query(() => [SetEntity])
     async getSets(
-        @Arg("input") input: ListOrderInput,
+        @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface
     ): Promise<SetEntity[]> {

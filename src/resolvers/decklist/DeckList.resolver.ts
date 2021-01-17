@@ -21,7 +21,7 @@ class DeckListResolver{
     @Authorized()
     @Query(() => [DeckListEntity])
     async getDeckMetadataList(
-        @Arg("input") input: ListOrderInput,
+        @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface) : Promise<DeckListEntity[]> {
             return DeckMetaGetList(page, input, ctx);

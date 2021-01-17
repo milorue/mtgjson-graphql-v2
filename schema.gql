@@ -662,14 +662,16 @@ type PurchaseUrls {
 
 type Query {
   getCard(input: CardGetInput!): Card!
-  getCards(input: CardGetListInput!, page: PaginationInput!): [Card!]!
+  getCards(order: CardGetListInput!, page: PaginationInput!): [Card!]!
   getDeck(input: DeckGetInput!): Deck!
   getDeckMetadata(input: DeckMetaGetInput!): DeckList!
-  getDeckMetadataList(input: ListOrderInput!, page: PaginationInput!): [DeckList!]!
-  getDecks(input: DeckGetListInput!, page: PaginationInput!): [Deck!]!
+  getDeckMetadataList(order: ListOrderInput!, page: PaginationInput!): [DeckList!]!
+  getDecks(order: DeckGetListInput!, page: PaginationInput!): [Deck!]!
   getMetadata: Meta!
   getSet(input: SetGetInput!): Set!
-  getSets(input: ListOrderInput!, page: PaginationInput!): [Set!]!
+  getSetMetadata(input: SetMetaGetInput!): SetList!
+  getSetMetadataList(order: ListOrderInput!, page: PaginationInput!): [SetList!]!
+  getSets(order: ListOrderInput!, page: PaginationInput!): [Set!]!
   status: Boolean!
 }
 
@@ -798,6 +800,11 @@ type SetList {
 
   """Expansion type of the set"""
   type: String
+}
+
+input SetMetaGetInput {
+  code: String
+  name: String
 }
 
 type Translations {

@@ -21,7 +21,7 @@ class DeckResolver {
     @Authorized()
     @Query(() => [DeckEntity])
     async getDecks(
-        @Arg("input") input: DeckGetListInput,
+        @Arg("order") input: DeckGetListInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface) : Promise<any[]> {
             return DeckGetList(page, input, ctx);

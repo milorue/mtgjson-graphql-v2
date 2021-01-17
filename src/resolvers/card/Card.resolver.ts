@@ -21,7 +21,7 @@ class CardResolver {
     @Authorized()
     @Query(() => [CardEntity])
     async getCards(
-        @Arg("input") input: CardGetListInput,
+        @Arg("order") input: CardGetListInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
             return CardGetList(page, input, ctx)

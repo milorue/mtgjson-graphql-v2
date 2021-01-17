@@ -30,7 +30,7 @@ const DeckMetaGet = async({code, name}: DeckMetaGetInput, ctx: ContextInterface)
         }
     }
     else{
-        throw new Error("Your input was invalid or malformed...")
+        throw new Error("Input was invalid or malformed...")
     }
 
 }
