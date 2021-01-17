@@ -22,6 +22,8 @@ DB_USER=postgres (or whatever you want)
 DB_PASS=<password>
 DB_DATABASE=mtgjson (or whatever you want)
 
+EMAIL_HOST=smtp.host
+EMAIL_PORT=465
 EMAIL_USER=test@gmail.com
 EMAIL_PASS=asdf1234
 ```
