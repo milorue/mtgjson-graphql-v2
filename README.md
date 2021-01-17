@@ -10,12 +10,16 @@ Please note that you will need to set up your own PSQL server to pull from and f
 with that looks similar to this:
 
 ```
+PORT=8000(whatever you like)
 DEV_MODE=true
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres (or whatever you want)
 DB_PASS=<password>
 DB_DATABASE=mtgjson (or whatever you want)
+
+EMAIL_USER=test@gmail.com
+EMAIL_PASS=pass
 ```
 
 ## About
