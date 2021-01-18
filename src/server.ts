@@ -11,8 +11,6 @@ const pkg = require("../package.json")
 const RELEASE = `mtgjson-graphql@${pkg.version}`
 
 MTGLog.info(`Starting ${RELEASE}`)
-
-console.log(process.env.DEV_MODE)
 let DEV: boolean = process.env.DEV_MODE === "true"
 const MODE = DEV ? "development" : "production"
 MTGLog.info(`Running in ${MODE} mode`)
