@@ -331,63 +331,11 @@ type Card {
 
 input CardGetInput {
   artist: String
-  asciiName: String
-  availability: [String!]
-  borderColor: String
-  colorIdentity: [String!]
-  colorIndicator: [String!]
-  colors: [String!]
-  convertedManaCost: Float
-  count: Float
-  duelDeck: String
-  edhrecRank: Float
-  faceConvertedManaCost: Float
-  faceName: String
-  flavorName: String
-  flavorText: String
-  frameEffects: String
-  frameVersion: String
-  hand: String
-  hasAlternativeDeckLimit: Boolean
-  hasContentWarning: Boolean
-  hasFoil: Boolean
-  hasNonFoil: Boolean
-  isAlternative: Boolean
-  isFoil: Boolean
-  isFullArt: Boolean
-  isOnlineOnly: Boolean
-  isOversized: Boolean
-  isPromo: Boolean
-  isReprint: Boolean
-  isReserved: Boolean
-  isStarter: Boolean
-  isStorySpotlight: Boolean
-  isTextless: Boolean
-  isTimeshifted: Boolean
-  keywords: [String!]
-  layout: String
-  life: String
-  loyalty: String
-  manaCost: String
   name: String
-  number: String
-  originalText: String
-  originalType: String
-  power: String
-  printings: [String!]
-  promoTypes: [String!]
-  rarity: String
   setCode: String
-  side: String
-  subTypes: [String!]
-  superTypes: [String!]
   text: String
-  toughness: String
   type: String
-  types: [String!]
   uuid: String
-  variation: [String!]
-  watermark: String
 }
 
 type CardToken {
