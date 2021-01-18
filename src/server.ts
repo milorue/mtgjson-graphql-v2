@@ -7,7 +7,6 @@ import { ApolloServer } from "apollo-server"
 import SetContext from './util/auth/SetContext'
 import {createSentry} from './util/Sentry'
 import { scheduleTokenUsageReset } from "./util/services/tokenService/token.service"
-
 const pkg = require("../package.json")
 const RELEASE = `mtgjson-graphql@${pkg.version}`
 

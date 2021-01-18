@@ -12,15 +12,15 @@ import ListOrderInput from "../../inputs/ListOrderInput";
 class CardResolver {
 
     @Authorized()
-    @Query(() => CardEntity)
+    @Query(() => [CardEntity], {description: "Retrieve all cards with a given name or uuid"})
     async card(
         @Arg("input") input: CardGetInput, 
-        @Ctx() ctx: ContextInterface): Promise<CardEntity> {
+        @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
             return CardGet(input, ctx)
         }
 
     @Authorized()
-    @Query(() => [CardEntity])
+    @Query(() => [CardEntity], {description: "Retrieve a list of cards ordered by id or a given field to order by"})
     async cards(
         @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,

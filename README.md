@@ -1,6 +1,6 @@
 
 # MTGJSON GraphQL V.2
-<img src='./assets/mtgraphql.svg' height='150px' alt="mtgraphql logo"/>
+<img src='./assets/mtggraphql_final.svg' height='150px' alt="mtgraphql logo"/>
 
 ### An Apollo GraphQL Server for [mtgjson.com](https://mtgjson.com)
 [![Discord](https://img.shields.io/discord/224178957103136779.svg)](https://discord.gg/74GUQDE)

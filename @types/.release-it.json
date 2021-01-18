@@ -1,0 +1,12 @@
+{
+    "github":{
+        "release": false
+    },
+    "git": {
+        "requireUpstream": false,
+        "tagName": "v${version}"
+    },
+    "npm":{
+        "publish": true
+    }
+}

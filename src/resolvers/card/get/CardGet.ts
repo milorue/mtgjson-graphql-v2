@@ -2,10 +2,10 @@ import { CardEntity } from "../../../entities/Card.entity";
 import { ContextInterface } from "types/interfaces/Context.interface";
 import CardGetInput from "./CardGetInput";
 
-const CardGet = async({name, uuid}: CardGetInput, ctx: ContextInterface): Promise<CardEntity> => {
+const CardGet = async({name, uuid}: CardGetInput, ctx: ContextInterface): Promise<CardEntity[]> => {
 
     if(!name){
-        const card = await CardEntity.findOne(
+        const card = await CardEntity.find(
             {
                 where: {
                     uuid: uuid,
@@ -18,7 +18,7 @@ const CardGet = async({name, uuid}: CardGetInput, ctx: ContextInterface): Promis
         return card
     }
     else if(name){
-        const card = await CardEntity.findOne(
+        const card = await CardEntity.find(
             {
                 where: {
                     name: name

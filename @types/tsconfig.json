@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "declaration": true,
+      "skipLibCheck": true,
+      "target": "es6",
+      "sourceMap": true,
+      "inlineSources": true,
+      "noImplicitAny": true,
+      "sourceRoot": "/",
+      "outDir": "./dist",
+      "rootDir": "",
+      "baseUrl": "",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "lib": [
+        "es2016",
+        "es2019"
+      ]
+    },
+    "exclude": [
+      "node_modules",
+    ],
+    "include": [
+        "types.ts"
+    ]
+}
