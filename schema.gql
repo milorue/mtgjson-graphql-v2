@@ -334,10 +334,6 @@ input CardGetInput {
   uuid: String
 }
 
-input CardGetListInput {
-  order: ListOrder!
-}
-
 type CardToken {
   """Name of the artist that illustrated the card art"""
   artist: String
@@ -484,10 +480,6 @@ type Deck {
 input DeckGetInput {
   code: String
   name: String
-}
-
-input DeckGetListInput {
-  order: ListOrder!
 }
 
 type DeckList {
@@ -662,11 +654,11 @@ type PurchaseUrls {
 
 type Query {
   card(input: CardGetInput!): Card!
-  cards(order: CardGetListInput!, page: PaginationInput!): [Card!]!
+  cards(order: ListOrderInput!, page: PaginationInput!): [Card!]!
   deck(input: DeckGetInput!): Deck!
   decklist(input: DeckMetaGetInput!): DeckList!
   decklists(order: ListOrderInput!, page: PaginationInput!): [DeckList!]!
-  decks(order: DeckGetListInput!, page: PaginationInput!): [Deck!]!
+  decks(order: ListOrderInput!, page: PaginationInput!): [Deck!]!
   metadata: Meta!
   set(input: SetGetInput!): Set!
   setlist(input: SetMetaGetInput!): SetList!

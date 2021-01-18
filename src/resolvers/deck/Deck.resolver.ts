@@ -6,6 +6,7 @@ import DeckGet from "./get/DeckGet";
 import DeckGetListInput from "./get-list/DeckGetListInput";
 import PaginationInput from "../../inputs/PaginationInput";
 import DeckGetList from "./get-list/DeckGetList";
+import ListOrderInput from "../../inputs/ListOrderInput";
 
 @Resolver()
 class DeckResolver {
@@ -21,7 +22,7 @@ class DeckResolver {
     @Authorized()
     @Query(() => [DeckEntity])
     async decks(
-        @Arg("order") input: DeckGetListInput,
+        @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface) : Promise<any[]> {
             return DeckGetList(page, input, ctx);

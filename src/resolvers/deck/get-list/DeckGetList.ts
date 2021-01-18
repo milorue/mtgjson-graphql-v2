@@ -4,8 +4,9 @@ import PaginationInput from "../../../inputs/PaginationInput";
 import MTGLog from "../../../util/Logger";
 import { ContextInterface } from "types/interfaces/Context.interface";
 import { ListOrder } from "../../../types/enums/Order.enum";
+import ListOrderInput from "../../../inputs/ListOrderInput";
 
-const DeckGetList = async({skip, take}: PaginationInput, {order}: DeckGetListInput, ctx: ContextInterface): Promise<DeckEntity[]> => {
+const DeckGetList = async({skip, take}: PaginationInput, {order}: ListOrderInput, ctx: ContextInterface): Promise<DeckEntity[]> => {
     let orderBy: string | any;
     switch(order){
         case ListOrder.ASC:

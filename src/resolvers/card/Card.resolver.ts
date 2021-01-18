@@ -6,6 +6,7 @@ import CardGet from "./get/CardGet";
 import CardGetListInput from "./get-list/CardGetListInput";
 import PaginationInput from "../../inputs/PaginationInput";
 import CardGetList from "./get-list/CardGetList";
+import ListOrderInput from "../../inputs/ListOrderInput";
 
 @Resolver()
 class CardResolver {
@@ -21,7 +22,7 @@ class CardResolver {
     @Authorized()
     @Query(() => [CardEntity])
     async cards(
-        @Arg("order") input: CardGetListInput,
+        @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
             return CardGetList(page, input, ctx)

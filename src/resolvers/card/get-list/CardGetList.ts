@@ -3,8 +3,9 @@ import CardGetListInput from "./CardGetListInput";
 import { CardEntity } from "../../../entities/Card.entity";
 import { ContextInterface } from "../../../types/interfaces/Context.interface";
 import { ListOrder } from "../../../types/enums/Order.enum";
+import ListOrderInput from "../../../inputs/ListOrderInput";
 
-const CardGetList = async({skip, take}: PaginationInput, {order}: CardGetListInput, ctx: ContextInterface): Promise<CardEntity[]> => {
+const CardGetList = async({skip, take}: PaginationInput, {order}: ListOrderInput, ctx: ContextInterface): Promise<CardEntity[]> => {
     let orderBy: string | any;
     switch(order){
         case ListOrder.ASC:
