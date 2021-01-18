@@ -654,7 +654,7 @@ type PurchaseUrls {
 
 type Query {
   """Retrieve all cards with a given name or uuid"""
-  card(input: CardGetInput!): [Card!]!
+  card(input: CardGetInput!, page: PaginationInput!): [Card!]!
 
   """Retrieve a list of cards ordered by id or a given field to order by"""
   cards(order: ListOrderInput!, page: PaginationInput!): [Card!]!
