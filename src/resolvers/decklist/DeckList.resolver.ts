@@ -7,25 +7,25 @@ import ListOrderInput from "../../inputs/ListOrderInput";
 import PaginationInput from "../../inputs/PaginationInput";
 import DeckMetaGetList from "./get-list/DeckMetaGetList";
 
-@Resolver()
-class DeckListResolver{
+// @Resolver()
+// class DeckListResolver{
 
-    @Authorized()
-    @Query(() => DeckListEntity)
-    async decklist(
-        @Arg("input") input: DeckMetaGetInput,
-        @Ctx() ctx: ContextInterface) : Promise<DeckListEntity> {
-            return DeckMetaGet(input, ctx);
-        }
+//     @Authorized()
+//     @Query(() => [DeckListEntity], {description: "Retrieves deck lists based on criteria provided"})
+//     async deckmeta(
+//         @Arg("input") input: DeckMetaGetInput,
+//         @Ctx() ctx: ContextInterface) : Promise<DeckListEntity[]> {
+//             return DeckMetaGet(input, ctx);
+//         }
 
-    @Authorized()
-    @Query(() => [DeckListEntity])
-    async decklists(
-        @Arg("order") input: ListOrderInput,
-        @Arg("page") page: PaginationInput,
-        @Ctx() ctx: ContextInterface) : Promise<DeckListEntity[]> {
-            return DeckMetaGetList(page, input, ctx);
-        }
-}
+//     @Authorized()
+//     @Query(() => [DeckListEntity], {description: "Retrieves a random list of deck lists from the database"})
+//     async random_deckmeta(
+//         @Arg("order") input: ListOrderInput,
+//         @Arg("page") page: PaginationInput,
+//         @Ctx() ctx: ContextInterface) : Promise<DeckListEntity[]> {
+//             return DeckMetaGetList(page, input, ctx);
+//         }
+// }
 
-export default DeckListResolver
+// export default DeckListResolver

@@ -1,13 +1,15 @@
 import { ContextInterface } from "../../../types/interfaces/Context.interface";
 import { DeckListEntity } from "../../../entities/DeckList.entity";
 import DeckMetaGetInput from "./DeckMetaGetInput";
+import { Like } from "typeorm";
 
-const DeckMetaGet = async({code, name}: DeckMetaGetInput, ctx: ContextInterface): Promise<DeckListEntity> => {
+const DeckMetaGet = async({code, name, fileName, releaseDate}: DeckMetaGetInput, ctx: ContextInterface): Promise<DeckListEntity[]> => {
 
     if(code){
-        const deckListQuery = await DeckListEntity.findOne({
+        const deckListQuery = await DeckListEntity.find({
             where: {
-                "code": code
+                code: code,
+                
             }
         })
 
@@ -17,16 +19,19 @@ const DeckMetaGet = async({code, name}: DeckMetaGetInput, ctx: ContextInterface)
             throw new Error("Deck with the provided code doesn't exist in our most recent build or in the universe")
         }
     }
-    else if(name){
-        const deckListQuery = await DeckListEntity.findOne({
+    else if(name || fileName || releaseDate){
+        console.log(releaseDate)
+        const deckListQuery = await DeckListEntity.find({
             where: {
-                "name": name
+                name: name? name: Like("%"),
+                fileName: fileName? fileName: Like("%"),
+                releaseDate: releaseDate? releaseDate: Like("%")
             }
         })
         if(deckListQuery){
             return deckListQuery
         } else{
-            throw new Error("Deck with the provided name doesn't exist in our most recent build or in the universe")
+            throw new Error("Deck with the provided value doesn't exist in our most recent build or in the universe")
         }
     }
     else{

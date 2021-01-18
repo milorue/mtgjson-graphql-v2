@@ -11,23 +11,25 @@ import SetGetList from "./get-list/SetGetList";
 class SetResolver {
 
     @Authorized()
-    @Query(() => SetEntity)
-    async set(
-        @Arg("input") input: SetGetInput,
-        @Ctx() ctx: ContextInterface
-    ): Promise<SetEntity> {
-        return SetGet(input, ctx)
-    }
-
-    @Authorized()
-    @Query(() => [SetEntity])
+    @Query(() => [SetEntity], {description: "Retrieves a given list of sets based on criteria"})
     async sets(
-        @Arg("order") input: ListOrderInput,
+        @Arg("input") input: SetGetInput,
+        @Arg("order") order: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface
     ): Promise<SetEntity[]> {
-        return SetGetList(page, input, ctx)
+        return SetGet(input, page, order, ctx)
     }
+
+    // @Authorized()
+    // @Query(() => [SetEntity], {description: "Retrieves a random list of sets from the database"})
+    // async randomSets(
+    //     @Arg("order") input: ListOrderInput,
+    //     @Arg("page") page: PaginationInput,
+    //     @Ctx() ctx: ContextInterface
+    // ): Promise<SetEntity[]> {
+    //     return SetGetList(page, input, ctx)
+    // }
 }
 
 export default SetResolver

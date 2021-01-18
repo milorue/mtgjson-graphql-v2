@@ -12,22 +12,23 @@ import ListOrderInput from "../../inputs/ListOrderInput";
 class CardResolver {
 
     @Authorized()
-    @Query(() => [CardEntity], {description: "Retrieve all cards with a given name or uuid"})
-    async card(
+    @Query(() => [CardEntity], {description: "Retrieve all cards with given criterias"})
+    async cards(
         @Arg("input") input: CardGetInput, 
         @Arg("page") page: PaginationInput,
+        @Arg("order") order: ListOrderInput,
         @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
-            return CardGet(input, page, ctx)
+            return CardGet(input, page, order, ctx)
         }
 
-    @Authorized()
-    @Query(() => [CardEntity], {description: "Retrieve a list of cards ordered by id or a given field to order by"})
-    async cards(
-        @Arg("order") input: ListOrderInput,
-        @Arg("page") page: PaginationInput,
-        @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
-            return CardGetList(page, input, ctx)
-        }
+    // @Authorized()
+    // @Query(() => [CardEntity], {description: "Retrieve a list of cards ordered by id randomly from the database"})
+    // async randomCards(
+    //     @Arg("order") input: ListOrderInput,
+    //     @Arg("page") page: PaginationInput,
+    //     @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
+    //         return CardGetList(page, input, ctx)
+    //     }
 }
 
 export default CardResolver

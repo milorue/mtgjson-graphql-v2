@@ -330,8 +330,64 @@ type Card {
 }
 
 input CardGetInput {
+  artist: String
+  asciiName: String
+  availability: [String!]
+  borderColor: String
+  colorIdentity: [String!]
+  colorIndicator: [String!]
+  colors: [String!]
+  convertedManaCost: Float
+  count: Float
+  duelDeck: String
+  edhrecRank: Float
+  faceConvertedManaCost: Float
+  faceName: String
+  flavorName: String
+  flavorText: String
+  frameEffects: String
+  frameVersion: String
+  hand: String
+  hasAlternativeDeckLimit: Boolean
+  hasContentWarning: Boolean
+  hasFoil: Boolean
+  hasNonFoil: Boolean
+  isAlternative: Boolean
+  isFoil: Boolean
+  isFullArt: Boolean
+  isOnlineOnly: Boolean
+  isOversized: Boolean
+  isPromo: Boolean
+  isReprint: Boolean
+  isReserved: Boolean
+  isStarter: Boolean
+  isStorySpotlight: Boolean
+  isTextless: Boolean
+  isTimeshifted: Boolean
+  keywords: [String!]
+  layout: String
+  life: String
+  loyalty: String
+  manaCost: String
   name: String
+  number: String
+  originalText: String
+  originalType: String
+  power: String
+  printings: [String!]
+  promoTypes: [String!]
+  rarity: String
+  setCode: String
+  side: String
+  subTypes: [String!]
+  superTypes: [String!]
+  text: String
+  toughness: String
+  type: String
+  types: [String!]
   uuid: String
+  variation: [String!]
+  watermark: String
 }
 
 type CardToken {
@@ -501,11 +557,6 @@ type DeckList {
   releaseDate: String
 }
 
-input DeckMetaGetInput {
-  code: String
-  name: String
-}
-
 type ForeignData {
   """Name on the face of the card"""
   faceName: String
@@ -653,20 +704,15 @@ type PurchaseUrls {
 }
 
 type Query {
-  """Retrieve all cards with a given name or uuid"""
-  card(input: CardGetInput!, page: PaginationInput!): [Card!]!
+  """Retrieve all cards with given criterias"""
+  cards(input: CardGetInput!, order: ListOrderInput!, page: PaginationInput!): [Card!]!
 
-  """Retrieve a list of cards ordered by id or a given field to order by"""
-  cards(order: ListOrderInput!, page: PaginationInput!): [Card!]!
-  deck(input: DeckGetInput!): Deck!
-  decklist(input: DeckMetaGetInput!): DeckList!
-  decklists(order: ListOrderInput!, page: PaginationInput!): [DeckList!]!
-  decks(order: ListOrderInput!, page: PaginationInput!): [Deck!]!
+  """Retrieve a deck given a deck code or name"""
+  decks(input: DeckGetInput!): Deck!
   metadata: Meta!
-  set(input: SetGetInput!): Set!
-  setlist(input: SetMetaGetInput!): SetList!
-  setlists(order: ListOrderInput!, page: PaginationInput!): [SetList!]!
-  sets(order: ListOrderInput!, page: PaginationInput!): [Set!]!
+
+  """Retrieves a given list of sets based on criteria"""
+  sets(input: SetGetInput!, order: ListOrderInput!, page: PaginationInput!): [Set!]!
   status: Boolean!
 }
 
@@ -759,8 +805,16 @@ type Set {
 }
 
 input SetGetInput {
+  block: String
   code: String
+  keyruneCode: String
+  mcmId: Float
+  mcmName: String
+  mtgoCode: String
   name: String
+  parentCode: String
+  releaseDate: String
+  type: String
 }
 
 type SetList {
@@ -795,11 +849,6 @@ type SetList {
 
   """Expansion type of the set"""
   type: String
-}
-
-input SetMetaGetInput {
-  code: String
-  name: String
 }
 
 type Translations {

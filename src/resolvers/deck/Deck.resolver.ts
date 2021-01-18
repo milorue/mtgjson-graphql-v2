@@ -12,21 +12,21 @@ import ListOrderInput from "../../inputs/ListOrderInput";
 class DeckResolver {
 
     @Authorized()
-    @Query(() => DeckEntity)
-    async deck(
+    @Query(() => DeckEntity, {description: "Retrieve a deck given a deck code or name"})
+    async decks(
         @Arg("input") input: DeckGetInput,
         @Ctx() ctx: ContextInterface): Promise<DeckEntity> {
             return DeckGet(input, ctx)
         }
 
-    @Authorized()
-    @Query(() => [DeckEntity])
-    async decks(
-        @Arg("order") input: ListOrderInput,
-        @Arg("page") page: PaginationInput,
-        @Ctx() ctx: ContextInterface) : Promise<any[]> {
-            return DeckGetList(page, input, ctx);
-        }
+    // @Authorized()
+    // @Query(() => [DeckEntity], {description: "Retrieve a list of random decks from the database"})
+    // async randomDecks(
+    //     @Arg("order") input: ListOrderInput,
+    //     @Arg("page") page: PaginationInput,
+    //     @Ctx() ctx: ContextInterface) : Promise<any[]> {
+    //         return DeckGetList(page, input, ctx);
+    //     }
 }
 
 export default DeckResolver
