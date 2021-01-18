@@ -12,7 +12,7 @@ class DeckResolver {
 
     @Authorized()
     @Query(() => DeckEntity)
-    async getDeck(
+    async deck(
         @Arg("input") input: DeckGetInput,
         @Ctx() ctx: ContextInterface): Promise<DeckEntity> {
             return DeckGet(input, ctx)
@@ -20,7 +20,7 @@ class DeckResolver {
 
     @Authorized()
     @Query(() => [DeckEntity])
-    async getDecks(
+    async decks(
         @Arg("order") input: DeckGetListInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface) : Promise<any[]> {

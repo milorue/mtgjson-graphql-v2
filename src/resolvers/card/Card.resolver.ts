@@ -12,7 +12,7 @@ class CardResolver {
 
     @Authorized()
     @Query(() => CardEntity)
-    async getCard(
+    async card(
         @Arg("input") input: CardGetInput, 
         @Ctx() ctx: ContextInterface): Promise<CardEntity> {
             return CardGet(input, ctx)
@@ -20,7 +20,7 @@ class CardResolver {
 
     @Authorized()
     @Query(() => [CardEntity])
-    async getCards(
+    async cards(
         @Arg("order") input: CardGetListInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {

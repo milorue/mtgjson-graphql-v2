@@ -12,7 +12,7 @@ class DeckListResolver{
 
     @Authorized()
     @Query(() => DeckListEntity)
-    async getDeckMetadata(
+    async decklist(
         @Arg("input") input: DeckMetaGetInput,
         @Ctx() ctx: ContextInterface) : Promise<DeckListEntity> {
             return DeckMetaGet(input, ctx);
@@ -20,7 +20,7 @@ class DeckListResolver{
 
     @Authorized()
     @Query(() => [DeckListEntity])
-    async getDeckMetadataList(
+    async decklists(
         @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface) : Promise<DeckListEntity[]> {

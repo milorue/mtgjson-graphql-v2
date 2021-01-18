@@ -8,7 +8,7 @@ class MetaResolver {
 
     @Authorized()
     @Query(() => MetaEntity)
-    async getMetadata(
+    async metadata(
         @Ctx() ctx: ContextInterface
     ): Promise<MetaEntity> {
         return MetaGet(ctx)

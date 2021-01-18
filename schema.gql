@@ -661,17 +661,17 @@ type PurchaseUrls {
 }
 
 type Query {
-  getCard(input: CardGetInput!): Card!
-  getCards(order: CardGetListInput!, page: PaginationInput!): [Card!]!
-  getDeck(input: DeckGetInput!): Deck!
-  getDeckMetadata(input: DeckMetaGetInput!): DeckList!
-  getDeckMetadataList(order: ListOrderInput!, page: PaginationInput!): [DeckList!]!
-  getDecks(order: DeckGetListInput!, page: PaginationInput!): [Deck!]!
-  getMetadata: Meta!
-  getSet(input: SetGetInput!): Set!
-  getSetMetadata(input: SetMetaGetInput!): SetList!
-  getSetMetadataList(order: ListOrderInput!, page: PaginationInput!): [SetList!]!
-  getSets(order: ListOrderInput!, page: PaginationInput!): [Set!]!
+  card(input: CardGetInput!): Card!
+  cards(order: CardGetListInput!, page: PaginationInput!): [Card!]!
+  deck(input: DeckGetInput!): Deck!
+  decklist(input: DeckMetaGetInput!): DeckList!
+  decklists(order: ListOrderInput!, page: PaginationInput!): [DeckList!]!
+  decks(order: DeckGetListInput!, page: PaginationInput!): [Deck!]!
+  metadata: Meta!
+  set(input: SetGetInput!): Set!
+  setlist(input: SetMetaGetInput!): SetList!
+  setlists(order: ListOrderInput!, page: PaginationInput!): [SetList!]!
+  sets(order: ListOrderInput!, page: PaginationInput!): [Set!]!
   status: Boolean!
 }
 

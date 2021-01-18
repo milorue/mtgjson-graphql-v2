@@ -12,7 +12,7 @@ class SetListResolver{
 
     @Authorized()
     @Query(() => SetListEntity)
-    async getSetMetadata(
+    async setlist(
         @Arg("input") input: SetMetaGetInput,
         @Ctx() ctx: ContextInterface
     ): Promise<SetListEntity> {
@@ -21,7 +21,7 @@ class SetListResolver{
 
     @Authorized()
     @Query(() => [SetListEntity])
-    async getSetMetadataList(
+    async setlists(
         @Arg("order") input: ListOrderInput,
         @Arg("page") page: PaginationInput,
         @Ctx() ctx: ContextInterface
