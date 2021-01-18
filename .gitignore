@@ -4,4 +4,4 @@ dist/
 .env
 src/database
 log/
-@types/node_modules/
+types/node_modules/

@@ -211,8 +211,64 @@ export type Card = {
 };
 
 export type CardGetInput = {
+  artist?: Maybe<Scalars['String']>;
+  asciiName?: Maybe<Scalars['String']>;
+  availability?: Maybe<Array<Scalars['String']>>;
+  borderColor?: Maybe<Scalars['String']>;
+  colorIdentity?: Maybe<Array<Scalars['String']>>;
+  colorIndicator?: Maybe<Array<Scalars['String']>>;
+  colors?: Maybe<Array<Scalars['String']>>;
+  convertedManaCost?: Maybe<Scalars['Float']>;
+  count?: Maybe<Scalars['Float']>;
+  duelDeck?: Maybe<Scalars['String']>;
+  edhrecRank?: Maybe<Scalars['Float']>;
+  faceConvertedManaCost?: Maybe<Scalars['Float']>;
+  faceName?: Maybe<Scalars['String']>;
+  flavorName?: Maybe<Scalars['String']>;
+  flavorText?: Maybe<Scalars['String']>;
+  frameEffects?: Maybe<Scalars['String']>;
+  frameVersion?: Maybe<Scalars['String']>;
+  hand?: Maybe<Scalars['String']>;
+  hasAlternativeDeckLimit?: Maybe<Scalars['Boolean']>;
+  hasContentWarning?: Maybe<Scalars['Boolean']>;
+  hasFoil?: Maybe<Scalars['Boolean']>;
+  hasNonFoil?: Maybe<Scalars['Boolean']>;
+  isAlternative?: Maybe<Scalars['Boolean']>;
+  isFoil?: Maybe<Scalars['Boolean']>;
+  isFullArt?: Maybe<Scalars['Boolean']>;
+  isOnlineOnly?: Maybe<Scalars['Boolean']>;
+  isOversized?: Maybe<Scalars['Boolean']>;
+  isPromo?: Maybe<Scalars['Boolean']>;
+  isReprint?: Maybe<Scalars['Boolean']>;
+  isReserved?: Maybe<Scalars['Boolean']>;
+  isStarter?: Maybe<Scalars['Boolean']>;
+  isStorySpotlight?: Maybe<Scalars['Boolean']>;
+  isTextless?: Maybe<Scalars['Boolean']>;
+  isTimeshifted?: Maybe<Scalars['Boolean']>;
+  keywords?: Maybe<Array<Scalars['String']>>;
+  layout?: Maybe<Scalars['String']>;
+  life?: Maybe<Scalars['String']>;
+  loyalty?: Maybe<Scalars['String']>;
+  manaCost?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  number?: Maybe<Scalars['String']>;
+  originalText?: Maybe<Scalars['String']>;
+  originalType?: Maybe<Scalars['String']>;
+  power?: Maybe<Scalars['String']>;
+  printings?: Maybe<Array<Scalars['String']>>;
+  promoTypes?: Maybe<Array<Scalars['String']>>;
+  rarity?: Maybe<Scalars['String']>;
+  setCode?: Maybe<Scalars['String']>;
+  side?: Maybe<Scalars['String']>;
+  subTypes?: Maybe<Array<Scalars['String']>>;
+  superTypes?: Maybe<Array<Scalars['String']>>;
+  text?: Maybe<Scalars['String']>;
+  toughness?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  types?: Maybe<Array<Scalars['String']>>;
   uuid?: Maybe<Scalars['String']>;
+  variation?: Maybe<Array<Scalars['String']>>;
+  watermark?: Maybe<Scalars['String']>;
 };
 
 export type CardToken = {
@@ -323,11 +379,6 @@ export type DeckList = {
   name?: Maybe<Scalars['String']>;
   /** Release date in ISO 8601 format for the set. Returns null if the set was not formally released as a product. */
   releaseDate?: Maybe<Scalars['String']>;
-};
-
-export type DeckMetaGetInput = {
-  code?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
 };
 
 export type ForeignData = {
@@ -449,73 +500,31 @@ export type PurchaseUrls = {
 
 export type Query = {
   __typename?: 'Query';
-  /** Retrieve all cards with a given name or uuid */
-  card: Array<Card>;
-  /** Retrieve a list of cards ordered by id or a given field to order by */
+  /** Retrieve all cards with given criterias */
   cards: Array<Card>;
-  deck: Deck;
-  decklist: DeckList;
-  decklists: Array<DeckList>;
-  decks: Array<Deck>;
+  /** Retrieve a deck given a deck code or name */
+  decks: Deck;
   metadata: Meta;
-  set: Set;
-  setlist: SetList;
-  setlists: Array<SetList>;
+  /** Retrieves a given list of sets based on criteria */
   sets: Array<Set>;
   status: Scalars['Boolean'];
 };
 
 
-export type QueryCardArgs = {
-  input: CardGetInput;
-};
-
-
 export type QueryCardsArgs = {
-  order: ListOrderInput;
-  page: PaginationInput;
-};
-
-
-export type QueryDeckArgs = {
-  input: DeckGetInput;
-};
-
-
-export type QueryDecklistArgs = {
-  input: DeckMetaGetInput;
-};
-
-
-export type QueryDecklistsArgs = {
+  input: CardGetInput;
   order: ListOrderInput;
   page: PaginationInput;
 };
 
 
 export type QueryDecksArgs = {
-  order: ListOrderInput;
-  page: PaginationInput;
-};
-
-
-export type QuerySetArgs = {
-  input: SetGetInput;
-};
-
-
-export type QuerySetlistArgs = {
-  input: SetMetaGetInput;
-};
-
-
-export type QuerySetlistsArgs = {
-  order: ListOrderInput;
-  page: PaginationInput;
+  input: DeckGetInput;
 };
 
 
 export type QuerySetsArgs = {
+  input: SetGetInput;
   order: ListOrderInput;
   page: PaginationInput;
 };
@@ -580,8 +589,16 @@ export type Set = {
 };
 
 export type SetGetInput = {
+  block?: Maybe<Scalars['String']>;
   code?: Maybe<Scalars['String']>;
+  keyruneCode?: Maybe<Scalars['String']>;
+  mcmId?: Maybe<Scalars['Float']>;
+  mcmName?: Maybe<Scalars['String']>;
+  mtgoCode?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  parentCode?: Maybe<Scalars['String']>;
+  releaseDate?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
 export type SetList = {
@@ -605,11 +622,6 @@ export type SetList = {
   totalSetSize?: Maybe<Scalars['Float']>;
   /** Expansion type of the set */
   type?: Maybe<Scalars['String']>;
-};
-
-export type SetMetaGetInput = {
-  code?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
 };
 
 export type Translations = {
