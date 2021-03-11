@@ -8,6 +8,8 @@
     "dev": "nodemon src/server.ts",
     "build": "tsc --project tsconfig.json",
     "start": "node dist/server.js",
+    "drop-database": "ts-node src/util/ingest/commands/UpdateData.ts",
+    "rebuild-database": "ts-node src/util/ingest/commands/UpdateDate.ts && npm run ingest-database",
     "ingest-database": "npm run ingest-cards && npm run ingest-setlist && npm run ingest-sets && npm run ingest-decklist && npm run ingest-decks && npm run ingest-metadata",
     "ingest-cards": "ts-node src/util/ingest/commands/IngestCards.ts",
     "ingest-setlist": "ts-node src/util/ingest/commands/IngestSetList.ts",
