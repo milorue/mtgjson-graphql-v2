@@ -64,7 +64,7 @@ export const sendConfirmationEmail = async(token: string, recipient: string) => 
             <p>If you have any issues with the service feel free to reach out on <a href="https://mtgjson.com/discord">discord</a> in the #mtgjson-gql channel or email me personally at zach@mtgjson.com. As a reminder, for supporting us on Patreon you get "red phone" access to the MTGJSON team.</p>
             <p>Thanks, <br/> Zach & The MTGJSON Team </p>
             <hr></hr>
-            <p>You're API token is ${token}</p>
+            <p>Your API token is ${token}</p>
             <p>https://mtgjson.com/graphql</p>
             <p>API Rate limits apply and are currently at 500 requests/hr per token with 1000 requests/hr per IP address. These are subject to change based on demand and usage of the API. If you need to reset your API key, for any reason, please reach out.</p>
             `
