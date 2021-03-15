@@ -652,6 +652,24 @@ input PaginationInput {
   take: Int = 15
 }
 
+input PriceGetInput {
+  """foil or normal"""
+  cardType: String
+
+  """Follows the format YYYY-MM-DD"""
+  date: String
+
+  """paper or mtgio"""
+  format: String
+
+  """buylist or retail"""
+  listType: String
+
+  """The provider you want prices on"""
+  provider: String
+  uuid: String
+}
+
 type PurchaseUrls {
   """URL to purchase a product on Card Kingdom"""
   cardKingdom: String
@@ -673,6 +691,9 @@ type Query {
   """Retrieve a deck given a deck code or name"""
   decks(input: DeckGetInput!): Deck!
   metadata: Meta!
+
+  """Retrieves all price history within given criterias"""
+  prices(input: PriceGetInput!, order: ListOrderInput!, page: PaginationInput!): [CardPrices!]!
 
   """Retrieves a given list of sets based on criteria"""
   sets(input: SetGetInput!, order: ListOrderInput!, page: PaginationInput!): [Set!]!
