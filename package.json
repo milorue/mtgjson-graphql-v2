@@ -1,6 +1,6 @@
 {
   "name": "mtgjson-graphql-v2",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A GraphQL API for mtgjson.com",
   "main": "index.js",
   "scripts": {
