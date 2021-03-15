@@ -44,7 +44,7 @@ export const tokenUsageIncrement = async(token: string): Promise<boolean> => {
     
     if(apiToken.rate < apiToken.rateLimit){
         apiToken.rate += 1
-        apiToken.save()
+        await apiToken.save()
         return true
     }
     else{
@@ -69,9 +69,9 @@ export const scheduleTokenUsageReset = async() => {
 
         MTGLog.info(`Running scheduled token rate usage reset @ ${new Date().toString()}`)
         try{
-            tokens.map((token) => {
+            tokens.map(async(token) => {
                 token.rate = 0
-                token.save()
+                await token.save()
             })
             MTGLog.info(`Scheduled token usage reset successful`)
         }
@@ -89,9 +89,9 @@ export const resetAllTokenUsage = async(): Promise<boolean> => {
     // this is most likely inefficient and should probably use queryBuilder but I'm being
     // lazy today and I'll fix it if needed
     try{
-        apiTokens.map((token) => {
+        apiTokens.map(async(token) => {
             token.rate = 0
-            token.save()
+            await token.save()
         })
         MTGLog.info(`Successfully reset all token's usage to 0`)
         return true
@@ -113,7 +113,7 @@ export const resetTokenUsage = async(email?: string, token?: string): Promise<bo
             return false
         }
         apiToken.rate = 0
-        apiToken.save()
+        await apiToken.save()
         MTGLog.info(`Reset token for email: ${email} rate to 0`)
         return true
     }
@@ -129,7 +129,7 @@ export const resetTokenUsage = async(email?: string, token?: string): Promise<bo
             return false
         }
         apiToken.rate = 0
-        apiToken.save()
+        await apiToken.save()
         MTGLog.info(`Reset token: ${token} rate to 0`)
         return false
     }

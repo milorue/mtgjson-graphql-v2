@@ -19,7 +19,7 @@ const PriceGet = async(priceInput: PriceGetInput, {take, skip}: PaginationInput,
             take: take,
             skip: skip,
             order: {
-                uuid: order
+                date: order
             }
         })
         if(!prices){
