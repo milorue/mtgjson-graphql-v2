@@ -72,4 +72,14 @@ export const getMeta = (): Promise<APIResponse> => {
     }).then(res => res.data)
 }
 
+export const getPrices = (): Promise<APIResponse> => {
+    return axios
+    .get(apiURL + "AllPrices.json",
+    {
+        params: {
+            _limit: 100
+        }
+    }).then(res => res.data)
+}
+
 // list functions

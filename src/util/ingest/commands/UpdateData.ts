@@ -19,8 +19,8 @@ const updateData = async() => {
         queryRunner.connect()
         MTGLog.info(`Connected the query runner successfully`);
         const tables = ["atomic-cards", "cards", "deck-list", "decks", "meta", "set-list", "sets"];
-        tables.map((val, i) => {
-            queryRunner.dropTable(val);
+        tables.map(async (val, i) => {
+            await queryRunner.dropTable(val);
             MTGLog.info(`Dropped: ${val}`)
         })
         MTGLog.info(`Successfully reset data tables`);
