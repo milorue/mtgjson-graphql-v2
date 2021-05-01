@@ -338,6 +338,21 @@ input CardGetInput {
   uuid: String
 }
 
+type CardImage {
+  multiverseImageUrl: String
+  scryfallImageUrl: String
+}
+
+input CardImageFaceInput {
+  face: String = "front"
+}
+
+input CardImageGetInput {
+  cardName: String
+  multiverseId: String
+  scryfallId: String
+}
+
 type CardPrices {
   """Card types can be foil & normal"""
   cardType: String!
@@ -685,6 +700,11 @@ type PurchaseUrls {
 }
 
 type Query {
+  """
+  Retrieve the image urls for a given scyfallId, multiverseId, or cardName
+  """
+  cardImage(face: CardImageFaceInput, input: CardImageGetInput!): CardImage!
+
   """Retrieve all cards with given criterias"""
   cards(input: CardGetInput!, order: ListOrderInput!, page: PaginationInput!): [Card!]!
 

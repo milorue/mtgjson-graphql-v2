@@ -7,6 +7,11 @@ import CardGetListInput from "./get-list/CardGetListInput";
 import PaginationInput from "../../inputs/PaginationInput";
 import CardGetList from "./get-list/CardGetList";
 import ListOrderInput from "../../inputs/ListOrderInput";
+import { CardImage } from "../../types/object-types/CardImage.object-type";
+import CardImageGetInput from "./get/CardImageInput";
+import CardImageFaceInput from "./get/CardImageFaceInput";
+import CardImageGet from "./get/CardImageGet";
+import { CardFace } from "../../types/enums/CardFace.enum";
 
 @Resolver()
 class CardResolver {
@@ -19,6 +24,14 @@ class CardResolver {
         @Arg("order") order: ListOrderInput,
         @Ctx() ctx: ContextInterface): Promise<CardEntity[]> {
             return CardGet(input, page, order, ctx)
+        }
+
+    @Query(() => CardImage, {description: "Retrieve the image urls for a given scyfallId, multiverseId, or cardName"})
+    async cardImage(
+        @Arg("input") input: CardImageGetInput,
+        @Arg("face", {nullable: true, defaultValue: CardFace.FRONT}) face: CardImageFaceInput,
+        @Ctx() ctx: ContextInterface) : Promise<CardImage> {
+            return CardImageGet(input, face, ctx);
         }
 
     // @Authorized()
