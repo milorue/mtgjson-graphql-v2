@@ -11,7 +11,7 @@ const CardGet = async(cardInput: CardGetInput, {take, skip}: PaginationInput, {o
         const card = await CardEntity.find(
             {
                 where: {
-                    uuid: cardInput.uuid,
+                    uuid: Like(cardInput.uuid),
                 },
                 take: take,
                 skip: skip,
@@ -32,9 +32,9 @@ const CardGet = async(cardInput: CardGetInput, {take, skip}: PaginationInput, {o
         const card = await CardEntity.find(
             {
                 where: {
-                    name: cardInput.name ? cardInput.name : Like("%"),
-                    setCode: cardInput.setCode ? cardInput.setCode : Like("%"),
-                    artist: cardInput.artist ? cardInput.artist : Like("%"),
+                    name: cardInput.name ? Like(`%${cardInput.name}%`) : Like("%"),
+                    setCode: cardInput.setCode ? Like(`%${cardInput.setCode}%`) : Like("%"),
+                    artist: cardInput.artist ? Like(`%${cardInput.artist}%`) : Like("%"),
                     // asciiName: cardInput.asciiName ? cardInput.asciiName : Like("%"),
                     // availability: cardInput.availability ? cardInput.availability : Like("%"),
                     // borderColor: cardInput.borderColor ? cardInput.borderColor : Like("%"),
@@ -84,9 +84,9 @@ const CardGet = async(cardInput: CardGetInput, {take, skip}: PaginationInput, {o
                     // side: cardInput.side ? cardInput.side : Like("%"),
                     // subTypes: cardInput.subTypes ? cardInput.subTypes : Like("%"),
                     // superTypes: cardInput.superTypes ? cardInput.superTypes : Like("%"),
-                    text: cardInput.text ? cardInput.text : Like("%"),
+                    text: cardInput.text ? Like(`%${cardInput.artist}%`) : Like("%"),
                     // toughness: cardInput.toughness ? cardInput.toughness : Like("%"),
-                    type: cardInput.type ? cardInput.type : Like("%"),
+                    type: cardInput.type ? Like(`%${cardInput.type}%`) : Like("%"),
                     // types: cardInput.types ? cardInput.types : Like("%"),
                     // variation: cardInput.variation ? cardInput.variation : Like("%"),
                     // watermark: cardInput.watermark ? cardInput.watermark : Like("%"),

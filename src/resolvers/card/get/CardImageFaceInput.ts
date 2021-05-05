@@ -3,7 +3,7 @@ import { CardFace } from "../../../types/enums/CardFace.enum";
 
 @InputType()
 class CardImageFaceInput {
-    @Field({defaultValue: CardFace.FRONT})
+    @Field(() => CardFace, {defaultValue: CardFace.FRONT})
     face: CardFace;
 }
 

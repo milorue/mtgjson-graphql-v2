@@ -329,6 +329,11 @@ type Card {
   watermark: String
 }
 
+enum CardFace {
+  BACK
+  FRONT
+}
+
 input CardGetInput {
   artist: String
   name: String
@@ -344,7 +349,7 @@ type CardImage {
 }
 
 input CardImageFaceInput {
-  face: String = "front"
+  face: CardFace = FRONT
 }
 
 input CardImageGetInput {
