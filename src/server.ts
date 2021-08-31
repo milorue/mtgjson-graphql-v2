@@ -5,7 +5,8 @@ import { DatabaseConfig } from "./types/DatabaseOptions"
 import { createSchema } from "./util/CreateSchema"
 import { ApolloServer } from "apollo-server"
 import SetContext from './util/auth/SetContext'
-import {createSentry} from './util/Sentry'
+// import {createSentry} from './util/Sentry'
+import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { scheduleTokenUsageReset } from "./util/services/tokenService/token.service"
 const pkg = require("../package.json")
 const RELEASE = `mtgjson-graphql@${pkg.version}`
@@ -34,7 +35,6 @@ const runServer = async() => {
         const server = new ApolloServer({
             schema,
             context: SetContext,
-            playground: true,
             cors: {
                 credentials: true,
                 origin: "*",
@@ -56,7 +56,10 @@ const runServer = async() => {
                 }
                 return err
             },
-            tracing: DEV,
+            plugins: [
+                ApolloServerPluginLandingPageGraphQLPlayground(),
+                require('apollo-tracing').plugin()
+            ]
         })
 
         const {url} = await server.listen({
