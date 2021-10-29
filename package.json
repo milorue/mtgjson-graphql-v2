@@ -9,7 +9,7 @@
     "build": "tsc --project tsconfig.json",
     "start": "node dist/server.js",
     "drop-database": "ts-node src/util/ingest/commands/UpdateData.ts",
-    "rebuild-database": "ts-node src/util/ingest/commands/UpdateData.ts && npm run ingest-database",
+    "rebuild-database": "npm run drop-database && npm run ingest-database",
     "ingest-database": "npm run ingest-cards && npm run ingest-setlist && npm run ingest-sets && npm run ingest-decklist && npm run ingest-decks && npm run ingest-metadata",
     "ingest-prices": "node --max_old_space_size=16384 --require ts-node/register src/util/ingest/commands/IngestPrices.ts",
     "ingest-cards": "ts-node src/util/ingest/commands/IngestCards.ts",
