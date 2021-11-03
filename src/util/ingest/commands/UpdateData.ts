@@ -19,16 +19,17 @@ const updateData = async() => {
         queryRunner.connect()
         MTGLog.info(`Connected the query runner successfully`);
         const tables = ["atomic-cards", "cards", "deck-list", "decks", "meta", "set-list", "sets"];
-        tables.map(async (val, i) => {
+        const promises = tables.map(async (val, i) => {
             await queryRunner.dropTable(val);
-            MTGLog.info(`Dropped: ${val}`)
+            MTGLog.info(`Dropped: ${val}`);
         })
+        await Promise.all(promises)
         MTGLog.info(`Successfully reset data tables`);
-        return;
+        return process.exit(0)
     }
     catch(err){
         MTGLog.error(`Error whilst running query runner: ${err}`)
-        return;
+        return process.exit(0)
     }
 
 
