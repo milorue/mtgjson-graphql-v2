@@ -361,7 +361,7 @@ input CardImageGetInput {
 type CardPrices {
   """Card types can be foil & normal"""
   cardType: String!
-  currency: String!
+  currency: String
   date: String!
   format: String!
   id: String
