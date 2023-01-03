@@ -1,6 +1,7 @@
 node_modules/
 .idea/
 dist/
+src/util/ingest/daily_prices.json
 .env
 src/database
 log/

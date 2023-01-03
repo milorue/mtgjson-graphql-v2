@@ -2,6 +2,7 @@ import axios from "axios";
 import { CardEntity } from "entities/Card.entity";
 import { Any } from "typeorm";
 import { APIResponse } from "types/interfaces/APIResponse.interface";
+import priceFile from "./daily_prices.json";
 
 const parentURL = `https://mtgjson.com/api/`;
 const version = `v5/`;
@@ -65,6 +66,10 @@ export const getPrices = (): Promise<APIResponse> => {
       },
     })
     .then((res) => res.data);
+};
+
+export const getDailyPriceFile = (): any => {
+  return priceFile;
 };
 
 // list functions
