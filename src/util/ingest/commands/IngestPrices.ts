@@ -144,15 +144,14 @@ const ingestPrices = async () => {
     });
 
     MTGLog.info(`Finished up ingesting prices`);
+    process.exit(0);
   } catch (err) {
     MTGLog.error(err);
   } finally {
     MTGLog.info(`Program exit`);
-    return;
   }
 };
 
 ingestPrices();
-return;
 
 export default ingestPrices;

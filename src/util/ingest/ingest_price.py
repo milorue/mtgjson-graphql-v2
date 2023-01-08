@@ -42,7 +42,7 @@ def main():
 
         temp_file.close()
 
-    print(f"{response} Saved Successfully")
+    print(f"{response.url} saved successfully")
     nested_dict = lambda: defaultdict(nested_dict)
     small_data = nested_dict()
 
@@ -65,7 +65,7 @@ def main():
 
     with local_final_save_path.open("w") as file:
         json.dump(small_data, file, indent=4, sort_keys=True)
-
+    print("Dumped to file successfully")
 
 if __name__ == "__main__":
     main()
