@@ -153,5 +153,6 @@ const ingestPrices = async () => {
 };
 
 ingestPrices();
+return;
 
 export default ingestPrices;

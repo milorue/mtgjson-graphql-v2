@@ -1,4 +1,6 @@
-﻿import argparse
+#!/usr/bin/env python3
+
+import argparse
 import json
 import lzma
 import pathlib
@@ -21,6 +23,7 @@ def main():
         help="Location to save trimmed all prices",
     )
     args = parser.parse_args()
+    print(args)
 
     local_final_save_path = pathlib.Path(args.output).expanduser().resolve()
 
@@ -39,6 +42,7 @@ def main():
 
         temp_file.close()
 
+    print(f"{response} Saved Successfully")
     nested_dict = lambda: defaultdict(nested_dict)
     small_data = nested_dict()
 
