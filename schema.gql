@@ -349,7 +349,7 @@ type CardImage {
 }
 
 input CardImageFaceInput {
-  face: CardFace = FRONT
+  face: CardFace! = FRONT
 }
 
 input CardImageGetInput {

@@ -1,21 +1,10 @@
-import {Context, ContextFunction} from 'apollo-server-core'
-import { ExpressContext } from "apollo-server-express/src/ApolloServer";
-import MTGLog from '../Logger';
+import {ContextFunction} from "@apollo/server";
+import {StandaloneServerContextFunctionArgument} from "@apollo/server/standalone";
 
-const SetContext: ContextFunction<ExpressContext, Context> | Context = ({req, res}) => {
-    let response;
-	if (res) {
-		response = res;
-	}
-	
-	let request;
-	if (req) {
-		request = req
-	}
-    
+const SetContext: ContextFunction<[StandaloneServerContextFunctionArgument]> = async ({req, res}) => {
 	return {
-		response,
-		request,
+		response: res,
+		request: req,
 		headers: req.headers,
 		token: req.headers.authorization || "",
 	};

@@ -1,12 +1,12 @@
 import {randomBytes} from 'crypto'
-import { APITokenEntity } from '../../../entities/APIToken.entity'
+import {APITokenEntity} from '../../../entities/APIToken.entity'
 import MTGLog from '../../../util/Logger'
+
 const schedule = require('node-schedule')
 
 
 export const generateAPIToken = async(): Promise<string> => {
-    const key = randomBytes(20).toString("hex")
-    return key
+    return randomBytes(20).toString("hex")
 }
 
 export const addAPIToken = async(email: string, tokenRateLimit?: number): Promise<string> => {
@@ -147,11 +147,7 @@ export const validateAPIToken = async(token: string): Promise<boolean> => {
             token: token
         }
     })
-    if(apiToken){
-        return true
-    } else{
-        return false
-    }
+    return !!apiToken;
 }
 
 export const revokeAPIToken = async(email: string): Promise<void> => {

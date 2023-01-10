@@ -1,6 +1,6 @@
 import { AuthChecker } from "type-graphql";
 import { ContextInterface } from "types/interfaces/Context.interface";
-import { validateAPIToken, tokenUsageIncrement } from "../../util/services/tokenService/token.service";
+import { validateAPIToken, tokenUsageIncrement } from "../services/tokenService/token.service";
 
 const RequestTokenChecker: AuthChecker<Partial<ContextInterface>> = async({context}): Promise<boolean> => {
     // if no context is passed to the auth checker then falsy
